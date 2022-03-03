@@ -22,6 +22,7 @@ jobs:
       # - name: Checkout repository
       #   uses: actions/checkout@v2
       - name: runs
-        run: env
-        run: pwd
-        run: ls -lah
+        run: |
+          env
+          pwd
+          ls -lah
