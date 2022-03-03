@@ -7,8 +7,8 @@ jobs:
     container:
       image: ghcr.io/unittestbot/utbotcpp/base_env:02-02-2022
       credentials:
-        username: utbot
-        password: utbot
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
       env:
         UTBOT_ALL: /utbot_distr
         UTBOT_INSTALL_DIR: /utbot_distr/install
@@ -16,9 +16,10 @@ jobs:
         CLI_PATH: /utbot_distr/cli
         DOCKER_TAG: 02-02-2022
         ARTIFACT_DIR: utbot-artifact
+      options: --user utbot
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      # - name: Checkout repository
+      #   uses: actions/checkout@v2
       - name: runs
         run: |
             pwd
