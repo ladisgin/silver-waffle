@@ -16,12 +16,12 @@ jobs:
         CLI_PATH: /utbot_distr/cli
         DOCKER_TAG: 02-02-2022
         ARTIFACT_DIR: utbot-artifact
+        GITHUB_WORKSPACE: /home/utbot/silver-waffle/silver-waffle
       options: --user utbot
     steps:
       # - name: Checkout repository
       #   uses: actions/checkout@v2
       - name: runs
-        run: |
-            env
-            pwd
-            ls -lah
+        run: env
+        run: pwd
+        run: ls -lah
