@@ -9,6 +9,7 @@ jobs:
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
+      user: utbot
       env:
         UTBOT_ALL: /utbot_distr
         UTBOT_INSTALL_DIR: /utbot_distr/install
@@ -16,7 +17,6 @@ jobs:
         CLI_PATH: /utbot_distr/cli
         DOCKER_TAG: 02-02-2022
         ARTIFACT_DIR: utbot-artifact
-      user: utbot
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
