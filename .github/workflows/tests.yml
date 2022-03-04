@@ -25,7 +25,7 @@ jobs:
           whoami
       - name: permissions
         run: |
-          sudo umask 775
+          umask 775
           sudo chown utbot /__w -R
           sudo chmod 777 /__w -R
       - name: Checkout repository
