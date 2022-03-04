@@ -32,4 +32,10 @@ jobs:
       - name: runs
         run: |
           pwd
+          echo hello > hello.txt
           ls -lah
+      - name: new dirs files
+        run: |
+          mkdir dirrr
+          echo hello > dirrr/hello.txt
+          ls -lah dirrr
