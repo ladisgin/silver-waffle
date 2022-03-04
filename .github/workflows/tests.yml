@@ -17,6 +17,12 @@ jobs:
         DOCKER_TAG: 03-03-2022
         ARTIFACT_DIR: utbot-artifact
     steps:
+      - name: permissions
+        run: |
+          sudo chown utbot /__w
+          sudo chmod 777 /__w
+      - name: Checkout repository
+        uses: actions/checkout@v2
       - name: runs
         run: |
           pwd
