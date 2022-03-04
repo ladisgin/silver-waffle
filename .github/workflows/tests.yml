@@ -14,13 +14,10 @@ jobs:
         UTBOT_INSTALL_DIR: /utbot_distr/install
         GRPC_PATH: /utbot_distr/install
         CLI_PATH: /utbot_distr/cli
-        DOCKER_TAG: 02-02-2022
+        DOCKER_TAG: 03-03-2022
         ARTIFACT_DIR: utbot-artifact
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
       - name: runs
         run: |
-          chown $USER $PWD
           pwd
           ls -lah
