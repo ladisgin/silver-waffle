@@ -5,7 +5,7 @@ jobs:
   tests:
     runs-on: ubuntu-18.04
     container:
-      image: ghcr.io/unittestbot/utbotcpp/base_env:02-02-2022
+      image: ghcr.io/unittestbot/utbotcpp/base_env:03-03-2022
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
@@ -16,7 +16,6 @@ jobs:
         CLI_PATH: /utbot_distr/cli
         DOCKER_TAG: 02-02-2022
         ARTIFACT_DIR: utbot-artifact
-        GITHUB_WORKSPACE: /home/utbot/silver-waffle/silver-waffle
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
