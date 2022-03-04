@@ -25,8 +25,8 @@ jobs:
           whoami
       - name: permissions
         run: |
-          sudo chown utbot /__w
-          sudo chmod 777 /__w
+          sudo chown utbot /__w -R
+          sudo chmod 777 /__w -R
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: runs
