@@ -21,7 +21,6 @@ jobs:
             echo "ARTIFACT_NAME=dev-$PROJECT_VERSION" >> $GITHUB_ENV
           fi
           export RUN_INFO="\"$GITHUB_WORKFLOW\" $GITHUB_REF_NAME $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
-          export RUN_INFO="\"$GITHUB_WORKFLOW\" $GITHUB_REF_NAME $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
           echo $RUN_INFO
       - name: prepare UTBot release for Ubuntu
         run: |
