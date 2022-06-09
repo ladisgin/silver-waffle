@@ -12,3 +12,5 @@ jobs:
       - name: get env
         run: |
           echo $GITHUB_REF_TYPE
+          echo $GITHUB_REF_NAME
+          echo $GITHUB_REF
