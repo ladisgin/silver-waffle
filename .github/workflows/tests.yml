@@ -13,16 +13,16 @@ jobs:
       - name: build UTBot
         run: |
           re="^[0-9]{4}\.[0-1][0-9](\.[0-9]+){0,1}$"
-          ref_name=$GITHUB_REF_NAME
-          if [[ $ref_name =~ $re ]]; then 
+          if [[ $GITHUB_REF_NAME =~ $re ]]; then 
             export PROJECT_VERSION=$GITHUB_REF_NAME
-            export RUN_INFO="\"$GITHUB_WORKFLOW\" release $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+            export RUN_INFO="\"$GITHUB_WORKFLOW\" $GITHUB_REF_NAME $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
             echo "ARTIFACT_NAME=release-$PROJECT_VERSION" >> $GITHUB_ENV
           else
             export PROJECT_VERSION=$(date '+%Y.%m').$GITHUB_RUN_NUMBER
             export RUN_INFO="\"$GITHUB_WORKFLOW\" $GITHUB_REF_NAME $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
             echo "ARTIFACT_NAME=dev-$PROJECT_VERSION" >> $GITHUB_ENV
           fi
+          echo $RUN_INFO
       - name: prepare UTBot release for Ubuntu
         run: |
           echo ${{ env.ARTIFACT_NAME }}
