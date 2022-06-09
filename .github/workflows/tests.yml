@@ -1,42 +1,14 @@
-
-on: push
-
+on:
+  push:
+    branches: [main]
+    tags:
+      - *
+      
+      
 jobs:
   tests:
     runs-on: ubuntu-18.04
-    container:
-      image: ghcr.io/unittestbot/utbotcpp/base_env:03-03-2022
-      credentials:
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
-      env:
-        UTBOT_ALL: /utbot_distr
-        UTBOT_INSTALL_DIR: /utbot_distr/install
-        GRPC_PATH: /utbot_distr/install
-        CLI_PATH: /utbot_distr/cli
-        DOCKER_TAG: 03-03-2022
-        ARTIFACT_DIR: utbot-artifact
     steps:
       - name: get env
         run: |
-          env
-      - name: get user
-        run: |
-          whoami
-      - name: permissions
-        run: |
-          umask 775
-          sudo chown utbot /__w -R
-          sudo chmod 777 /__w -R
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      - name: runs
-        run: |
-          pwd
-          echo hello > hello.txt
-          ls -lah
-      - name: new dirs files
-        run: |
-          mkdir dirrr
-          echo hello > dirrr/hello.txt
-          ls -lah dirrr
+          echo $GITHUB_REF_TYPE
