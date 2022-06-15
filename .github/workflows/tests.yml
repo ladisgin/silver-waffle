@@ -2,7 +2,6 @@ name: wwwwww
 on:
   push:
     branches: [main]
-  create:
     tags:
       - '\d{4}\.[0-1]\d(\.\d+){0,1}'
 
