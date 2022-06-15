@@ -1,9 +1,11 @@
 name: wwwwww
 on:
   push:
-    branches: [main]
+    branches:
+      - main
   create:
-    tags: [\d{4}\.[0-1]\d(\.\d+){0,1}]
+    tags: 
+      - \d{4}\.[0-1]\d(\.\d+){0,1}
 
 jobs:
   publish:
