@@ -2,4 +2,4 @@
 Repository for github feature tests
 
 
-awful
+string for check pr template
