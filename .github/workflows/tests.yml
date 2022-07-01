@@ -12,7 +12,7 @@ jobs:
         run: |
           export VERSION=$(date '+%Y.%-m').$GITHUB_RUN_NUMBER
           echo $VERSION
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
       - name: build UTBot
         run: |
-          export VERSION=${{ env.VERSION }}
           echo $VERSION
