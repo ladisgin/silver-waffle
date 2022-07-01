@@ -1,29 +1,17 @@
 name: wwwwww
 on:
   push:
-    tags:
-      - '[0-9][0-9][0-9][0-9].[0-1][0-9].[0-9]+'
-      - '[0-9][0-9][0-9][0-9].[0-1][0-9]'
     branches:
-      - main
+      - '*'
 
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
+      - name: set version
+        run: |
+            export VERSION=$(date '+%y.%m').$GITHUB_RUN_NUMBER
+            echo "VERSION=$VERSION" >> $GITHUB_ENV
       - name: build UTBot
         run: |
-          re="^[0-9]{4}\.[0-1][0-9](\.[0-9]+){0,1}$"
-          if [[ $GITHUB_REF_NAME =~ $re ]]; then 
-            export PROJECT_VERSION=$GITHUB_REF_NAME
-            echo "ARTIFACT_NAME=release-$PROJECT_VERSION" >> $GITHUB_ENV
-          else
-            export PROJECT_VERSION=$(date '+%Y.%m').$GITHUB_RUN_NUMBER
-            echo "ARTIFACT_NAME=dev-$PROJECT_VERSION" >> $GITHUB_ENV
-          fi
-          export RUN_INFO="\"$GITHUB_WORKFLOW\" $GITHUB_REF_NAME $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
-          echo $RUN_INFO
-      - name: prepare UTBot release for Ubuntu
-        run: |
-          echo ${{ env.ARTIFACT_NAME }}
-          echo $ARTIFACT_NAME
+          echo $VERSION
