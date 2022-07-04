@@ -21,4 +21,5 @@ jobs:
           echo "VERSION=$VERSION" >> $GITHUB_ENV
           export RUN_INFO=$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
           echo "RUN_INFO=RUN_INFO" >> $GITHUB_ENV
+          echo $GITHUB_REF_NAME
           echo $ARTIFACT_NAME
