@@ -10,9 +10,15 @@ jobs:
     steps:
       - name: set version
         run: |
-          export VERSION=$(date '+%Y.%-m').$GITHUB_RUN_NUMBER
-          echo $VERSION
+          re="^[1-9][0-9]{3}\.[1]?[0-9]\.(0|[1-9][0-9]*)$"
+          if [[ $GITHUB_REF_NAME =~ $re ]]; then 
+            export VERSION=$GITHUB_REF_NAME
+            echo "ARTIFACT_NAME=release-$VERSION" >> $GITHUB_ENV
+          else
+            export VERSION=$(date '+%Y.%-m').$GITHUB_RUN_NUMBER
+            echo "ARTIFACT_NAME=dev-$VERSION" >> $GITHUB_ENV
+          fi
           echo "VERSION=$VERSION" >> $GITHUB_ENV
-      - name: build UTBot
-        run: |
-          echo $VERSION
+          export RUN_INFO=$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
+          echo "RUN_INFO=RUN_INFO" >> $GITHUB_ENV
+          echo $ARTIFACT_NAME
